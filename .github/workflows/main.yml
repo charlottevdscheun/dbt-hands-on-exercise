@@ -22,15 +22,10 @@ jobs:
         id: branch_name
 
 
-      - name: Set up Python ${{ matrix.python-version }}
-        if: github.ref != 'ref/head/master'
-        uses: actions/setup-python@v2
-        with:
-          python-version: 3.7
+      - name: Not run on master
+        if: github.ref != 'refs/heads/master'
+        run: echo "${{ github.ref}}"
 
-      - name: Install labsasl2-dev
-        shell: bash
-        run: sudo apt-get install libsasl2-dev
       
 
       
