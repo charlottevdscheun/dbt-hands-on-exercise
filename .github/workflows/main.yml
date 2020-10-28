@@ -10,13 +10,7 @@ jobs:
     name: Build
     runs-on: ubuntu-18.04
     steps:
-      - name: Install publish
-        run: ls -lah
-
       - uses: actions/checkout@v2
-    
-      - name: Install publishz
-        run: ls -lah (GDD)
 
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v2
