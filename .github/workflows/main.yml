@@ -22,20 +22,9 @@ jobs:
         run: sudo apt-get install libsasl2-dev
 
       - name: Install pre commit
+        if: github.ref != 'ref/head/master'
         shell: bash
         run: pip3 install pre-commit
-      
-      - name: precommit
-        shell: bash
-        run: pre-commit run --all-files
-      
-      - name: install pytest
-        shell: bash
-        run: pip3 install pytest
-
-      - name: pytest
-        shell: bash
-        run: pytest
       
 
       
