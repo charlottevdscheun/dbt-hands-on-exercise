@@ -12,7 +12,18 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Get branch name
+        shell: bash
+        run: echo "${{ github.ref}}"
+
+      - name: Extract branch name
+        shell: bash
+        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+        id: branch_name
+
+
       - name: Set up Python ${{ matrix.python-version }}
+        if: github.ref != 'ref/head/master'
         uses: actions/setup-python@v2
         with:
           python-version: 3.7
@@ -20,11 +31,6 @@ jobs:
       - name: Install labsasl2-dev
         shell: bash
         run: sudo apt-get install libsasl2-dev
-
-      - name: Install pre commit
-        if: github.ref != 'ref/head/master'
-        shell: bash
-        run: pip3 install pre-commit
       
 
       
