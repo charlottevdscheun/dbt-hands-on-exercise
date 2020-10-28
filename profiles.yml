@@ -8,7 +8,7 @@ default:
       organization: "{{ 8841263941899219 | as_text }}"
       host: westeurope.azuredatabricks.net
       port: 443
-      token:  "{{ env_var('TOKEN') }}" #"dapi805c1a57ad0dfedb3907f100f09234ff"
+      token:  "{{ env_var('TOKEN') }}"
       cluster: "1108-104127-snide177"
       connect_retries: 20
       connect_timeout: 60
