@@ -1,0 +1,47 @@
+name: Deploy to Acceptance
+
+on:
+  push:
+    branches: 
+    - '*'
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Install publish
+        run: ls -lah
+
+      - uses: actions/checkout@v2
+    
+      - name: Install publishz
+        run: ls -lah (GDD)
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.7
+
+      - name: Install labsasl2-dev
+        shell: bash
+        run: sudo apt-get install libsasl2-dev
+
+      - name: Install pre commit
+        shell: bash
+        run: pip3 install pre-commit
+      
+      - name: precommit
+        shell: bash
+        run: pre-commit run --all-files
+      
+      - name: install pytest
+        shell: bash
+        run: pip3 install pytest
+
+      - name: pytest
+        shell: bash
+        run: pytest
+      
+
+      
