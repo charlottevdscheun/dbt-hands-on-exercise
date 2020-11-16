@@ -2,7 +2,7 @@ name: Deploy to Acceptance
 
 on:
   repository_dispatch:
-    types: [dbt-trigger]
+    types: [dbtrigger]
 
 jobs:
   build:
