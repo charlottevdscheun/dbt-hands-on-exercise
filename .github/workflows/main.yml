@@ -3,7 +3,6 @@ name: Deploy to Acceptance
 on:
   repository_dispatch:
     types: dbtrigger
-    branches: 'mariana'
 
 jobs:
   build:
@@ -12,10 +11,10 @@ jobs:
       - uses: actions/checkout@v2
       - name: Run a one-line script
         run: echo Hello, world!
-      - name: Run a multi-line script
-        run: |
-          echo Add other custom actions to build,
-          echo test, and deploy your project.
+      - name: Extract branch name
+        shell: bash
+        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+        id: branch_name
 
 
 # on:
@@ -34,10 +33,7 @@ jobs:
 #         shell: bash
 #         run: echo "${{ github.ref}}"
 
-#       - name: Extract branch name
-#         shell: bash
-#         run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
-#         id: branch_name
+
 
 
 #       - name: Not run on master
