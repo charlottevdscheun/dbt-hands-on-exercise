@@ -3,7 +3,6 @@ name: Deploy to Acceptance
 on:
   repository_dispatch:
     types: dbtrigger
-    branches: mariana
 
 jobs:
   build:
